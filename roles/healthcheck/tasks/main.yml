@@ -1,0 +1,88 @@
+
+- name: Get Server Uptime
+  command: uptime
+  register: uptime_output
+
+- name: display output
+  debug: 
+    var: uptime_output.stdout
+
+- name: Get Server disk usage
+  command: df -h
+  register: disk_output
+
+- name: display disk usage
+  debug:
+    var: disk_output.stdout
+
+- name: Get Server memory usage
+  command: free -h
+  register: memory_output
+
+- name: display output
+  debug: 
+    var: memory_output.stdout
+
+- name: Get CPU information
+  command: lscpu 
+  register: cpu_output
+
+- name: display output
+  debug:
+    var: cpu_output.stdout
+
+- name: Check nginx service
+  command: systemctl is-active nginx
+  register: nginx_output
+  ignore_errors: yes
+
+- name: display nginx status
+  debug:
+    var: nginx_output.stdout
+
+- name: Get hostname
+  command: hostname
+  register: hostname_output
+  
+- name: display hostname
+  debug: 
+    var: hostname_output.stdout
+
+- name: Get IP Address
+  command: hostname -I
+  register: ip_output
+
+- name: display ip address
+  debug:
+    var: ip_output.stdout
+
+- name: Get Kernal Version
+  command: uname -r
+  register: kernal_output
+
+- name: display kernal version
+  debug:
+    var: kernal_output.stdout
+
+- name: Get logged in users
+  command: who
+  register: users_output
+
+- name: display users
+  debug:
+    var: users_output.stdout
+
+- name: Last boot time 
+  command: who -b
+  register: boot_output
+
+- name: display last boot
+  debug:
+    var: boot_output.stdout 
+
+- name: Generate Health Check Report
+  template:
+     src: report.j2
+     dest: /tmp/health_report.txt
+  delegate_to: localhost
+  run_once: true

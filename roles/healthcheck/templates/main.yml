@@ -1,0 +1,4 @@
+- name: Generate Health Check Report
+  template:
+     src: report.j2
+     dest: /tmp/health_report.txt

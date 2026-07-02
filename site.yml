@@ -1,0 +1,7 @@
+---
+   - name: Linux Health Check
+     hosts: nodes
+     become: yes
+
+     roles:
+           - healthcheck
