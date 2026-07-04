@@ -1,8 +1,8 @@
-# Linux Health Check Automation using Ansible
+# Linux Health Check Automation using Ansible Roles
 
 ## Project Overview
 
-This project automates Linux server health checks using Ansible Roles. It collects health information from managed Linux servers and generates a health check report using a Jinja2 template. The playbook can also be scheduled using Cron for automatic execution.
+This project automates Linux server health checks using Ansible Roles. It collects health information from managed Linux servers and generates a health check report on the Ansible control node using a Jinja2 template. The playbook can also be scheduled using Cron for automatic execution.
 
 ## Features
 
